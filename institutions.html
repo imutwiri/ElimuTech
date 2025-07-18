@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Institutions - ElimuTech | Kenyan Software Development Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style>
+        .kenyan-flag-bg {
+         background: linear-gradient(to right, 
+          #006600 33%,  /* Green */
+          #000000 33%,  /* Black */
+          #000000 66%,  /* Black */
+          #BB0000 66%,  /* Red */
+          #BB0000 100%  /* Red */
+           );
+           height: 8px;
+        }
+        .institution-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .institution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu {
+            display: none;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+        .benefit-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        .benefit-card:hover {
+            border-left-color: #047857;
+            background-color: #f0fdf4;
+        }
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        .timeline {
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #047857;
+            transform: translateX(-50%);
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Kenyan Flag Top Bar -->
+    <div class="kenyan-flag-bg"></div>
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="Images/ELIMU Tech.png" alt="ElimuTech Logo" class="h-10 mr-3">
+                <h1 class="text-xl font-bold text-gray-800 ml-3">Elimu<span class="text-green-700">Tech</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-green-700 font-medium">Home</a>
+                <a href="courses.html" class="text-gray-700 hover:text-green-700 font-medium">Courses</a>
+                <a href="institutions.html" class="text-green-700 font-medium">For Institutions</a>
+                <a href="success.html" class="text-gray-700 hover:text-green-700 font-medium">Success Stories</a>
+                <a href="contact.html" class="text-gray-700 hover:text-green-700 font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <a href="login.html" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="hidden md:block bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <a href="index.html" class="py-2 text-gray-700 hover:text-green-700 block">Home</a>
+            <a href="courses.html" class="py-2 text-gray-700 hover:text-green-700 block">Courses</a>
+            <a href="institutions.html" class="py-2 text-green-700 font-medium block">For Institutions</a>
+            <a href="success.html" class="py-2 text-gray-700 hover:text-green-700 block">Success Stories</a>
+            <a href="contact.html" class="py-2 text-gray-700 hover:text-green-700 block">Contact</a>
+            <div class="flex space-x-2 mt-3">
+                <a href="login.html" class="w-1/2 text-center bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="w-1/2 text-center bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Institutions Hero Section -->
+    <section class="bg-gradient-to-r from-green-700 via-black to-red-700 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Empowering Kenyan Institutions with Cutting-Edge Tech Education</h1>
+                <p class="text-xl mb-8">Partner with ElimuTech to enhance your curriculum, provide industry-relevant skills, and prepare students for Kenya's growing tech ecosystem.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#partnership-form" class="bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-6 rounded-md">Request Partnership</a>
+                    <a href="#benefits" class="bg-transparent border-2 border-white hover:bg-white hover:text-green-800 font-bold py-3 px-6 rounded-md">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
+                <div>
+                    <div class="text-4xl font-bold text-green-700 mb-2">24+</div>
+                    <div class="text-gray-700">Partner Institutions</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-green-700 mb-2">15,000+</div>
+                    <div class="text-gray-700">Students Enrolled</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-green-700 mb-2">120+</div>
+                    <div class="text-gray-700">Industry Projects</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-green-700 mb-2">95%</div>
+                    <div class="text-gray-700">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Benefits for Kenyan Institutions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">How partnering with ElimuTech enhances your educational offerings and benefits your students</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="benefit-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-green-700 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Curriculum Enhancement</h3>
+                    <p class="text-gray-600">Complement your existing programs with industry-relevant courses that keep pace with Kenya's evolving tech landscape.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-green-700 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Industry-Recognized Certification</h3>
+                    <p class="text-gray-600">Offer your students certificates co-branded with your institution and ElimuTech, valued by Kenyan employers.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-green-700 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Improved Graduate Employability</h3>
+                    <p class="text-gray-600">Equip students with practical skills that make them job-ready for Kenya's growing tech sector.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop-code text-green-700 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Access to Modern Tech Stack</h3>
+                    <p class="text-gray-600">Provide students with training on tools and technologies actually used in Kenyan tech companies.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-green-700 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Faculty Development</h3>
+                    <p class="text-gray-600">Access professional development resources to help your instructors stay current with industry practices.</p>
+                </div>
+                
+                <div class="benefit-card bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-handshake text-green-700 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Industry Connections</h3>
+                    <p class="text-gray-600">Connect with Kenyan tech companies for internships, projects, and recruitment opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Models -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Partnership Models</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Flexible options to suit institutions of all sizes across Kenya</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="institution-card bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Basic Partnership</h3>
+                    <div class="text-3xl font-bold text-green-700 mb-4">Free</div>
+                    <ul class="space-y-3 mb-6 text-left">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Student access to core courses</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Institution-branded certificates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Basic analytics dashboard</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-gray-400 mt-1 mr-2"></i>
+                            <span class="text-gray-400">Custom learning paths</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-gray-400 mt-1 mr-2"></i>
+                            <span class="text-gray-400">Faculty training</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md">
+                        Get Started
+                    </button>
+                </div>
+                
+                <div class="institution-card bg-white border-2 border-green-700 rounded-lg p-6 text-center relative">
+                    <div class="absolute top-0 right-0 bg-green-700 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">MOST POPULAR</div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Premium Partnership</h3>
+                    <div class="text-3xl font-bold text-green-700 mb-4">KSh 150/student</div>
+                    <ul class="space-y-3 mb-6 text-left">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>All Basic features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Full course library access</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Custom learning paths</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Faculty training workshops</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Advanced analytics</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md">
+                        Get Started
+                    </button>
+                </div>
+                
+                <div class="institution-card bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Enterprise Partnership</h3>
+                    <div class="text-3xl font-bold text-green-700 mb-4">Custom Pricing</div>
+                    <ul class="space-y-3 mb-6 text-left">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>All Premium features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Custom course development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Dedicated success manager</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Integration with LMS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span>Industry partnership programs</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md">
+                        Contact Sales
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">How Partnership Works</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Simple steps to integrate ElimuTech with your institution</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="step-icon bg-green-100 text-green-700">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">1. Partnership Agreement</h3>
+                    <p class="text-gray-600">Sign our simple partnership agreement to get started</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="step-icon bg-green-100 text-green-700">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">2. Student Enrollment</h3>
+                    <p class="text-gray-600">Provide student lists for bulk enrollment and verification</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="step-icon bg-green-100 text-green-700">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">3. Curriculum Integration</h3>
+                    <p class="text-gray-600">We help integrate courses with your existing programs</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="step-icon bg-green-100 text-green-700">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">4. Track Progress</h3>
+                    <p class="text-gray-600">Monitor student progress through our analytics dashboard</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Institutions -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Partner Institutions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kenyan universities and colleges already benefiting from ElimuTech partnership</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
+                <div class="partner-logo bg-gray-100 border border-gray-200 rounded-lg h-24 flex items-center justify-center p-4">
+                    <span class="font-bold text-gray-700">University of Nairobi</span>
+                </div>
+                <div class="partner-logo bg-gray-100 border border-gray-200 rounded-lg h-24 flex items-center justify-center p-4">
+                    <span class="font-bold text-gray-700">Kenyatta University</span>
+                </div>
+                <div class="partner-logo bg-gray-100 border border-gray-200 rounded-lg h-24 flex items-center justify-center p-4">
+                    <span class="font-bold text-gray-700">JKUAT</span>
+                </div>
+                <div class="partner-logo bg-gray-100 border border-gray-200 rounded-lg h-24 flex items-center justify-center p-4">
+                    <span class="font-bold text-gray-700">Strathmore University</span>
+                </div>
+                <div class="partner-logo bg-gray-100 border border-gray-200 rounded-lg h-24 flex items-center justify-center p-4">
+                    <span class="font-bold text-gray-700">Mount Kenya University</span>
+                </div>
+                <div class="partner-logo bg-gray-100 border border-gray-200 rounded-lg h-24 flex items-center justify-center p-4">
+                    <span class="font-bold text-gray-700">KCA University</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">What Our Partners Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Feedback from Kenyan institutions using ElimuTech</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user h-18 rounded-full mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Dr. James Mwangi</h4>
+                            <p class="text-sm text-gray-600">Dean, School of Computing - University of Nairobi</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"ElimuTech has transformed how we deliver practical tech education. Our students now graduate with industry-ready skills that make them highly employable in Kenya's competitive job market."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user h-18 rounded-full mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Prof. Susan Kimathi</h4>
+                            <p class="text-sm text-gray-600">Director, ICT Department - Kenyatta University</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The partnership with ElimuTech has allowed us to modernize our curriculum without significant infrastructure investment. Our faculty have also benefited from the professional development resources."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user h-18 rounded-full mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Dr. Peter Otieno</h4>
+                            <p class="text-sm text-gray-600">Head of Computer Science - JKUAT</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Since implementing ElimuTech, we've seen a 40% increase in graduate employment rates. The Kenyan-specific case studies and projects resonate well with our students and local employers."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Timeline -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Implementation Timeline</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">How quickly you can integrate ElimuTech into your institution</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto timeline">
+                <!-- Timeline Item 1 -->
+                <div class="mb-12 relative pl-8 md:pl-0 md:flex items-center">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="font-bold text-lg text-gray-800">Week 1</div>
+                        <h3 class="text-xl font-bold text-green-700">Partnership Setup</h3>
+                        <p class="text-gray-600">Agreement signing and initial planning</p>
+                    </div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2">
+                        <div class="w-6 h-6 bg-green-700 rounded-full"></div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="mb-12 relative pl-8 md:pl-0 md:flex items-center">
+                    <div class="md:w-1/2 md:pr-12"></div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2">
+                        <div class="w-6 h-6 bg-green-700 rounded-full"></div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <div class="font-bold text-lg text-gray-800">Week 2</div>
+                        <h3 class="text-xl font-bold text-green-700">Technical Integration</h3>
+                        <p class="text-gray-600">System setup and student data integration</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="mb-12 relative pl-8 md:pl-0 md:flex items-center">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="font-bold text-lg text-gray-800">Week 3</div>
+                        <h3 class="text-xl font-bold text-green-700">Faculty Training</h3>
+                        <p class="text-gray-600">Workshops for instructors and administrators</p>
+                    </div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2">
+                        <div class="w-6 h-6 bg-green-700 rounded-full"></div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="mb-12 relative pl-8 md:pl-0 md:flex items-center">
+                    <div class="md:w-1/2 md:pr-12"></div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2">
+                        <div class="w-6 h-6 bg-green-700 rounded-full"></div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <div class="font-bold text-lg text-gray-800">Week 4</div>
+                        <h3 class="text-xl font-bold text-green-700">Student Onboarding</h3>
+                        <p class="text-gray-600">Student accounts activation and orientation</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="relative pl-8 md:pl-0 md:flex items-center">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
+                        <div class="font-bold text-lg text-gray-800">Week 5</div>
+                        <h3 class="text-xl font-bold text-green-700">Full Implementation</h3>
+                        <p class="text-gray-600">Courses integrated into curriculum</p>
+                    </div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2">
+                        <div class="w-6 h-6 bg-green-700 rounded-full"></div>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Form -->
+    <section id="partnership-form" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/5 bg-gradient-to-b from-green-700 to-black text-white p-8">
+                        <h3 class="text-2xl font-bold mb-4">Partner with Us</h3>
+                        <p class="mb-6">Join Kenya's leading institutions in transforming tech education</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>Enhance your curriculum</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>Boost graduate employability</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>Access industry partnerships</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-3/5 p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Request Information</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="name">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Your name">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="title">Title</label>
+                                <input type="text" id="title" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Your position">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="institution">Institution</label>
+                                <input type="text" id="institution" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Institution name">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="your@gmail.com">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="phone">Phone</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="+254 701 234567">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="message">Message</label>
+                                <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Tell us about your institution's needs"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-md">
+                                Submit Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Common questions from Kenyan institutions</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="border border-gray-200 rounded-lg mb-4">
+                    <button class="w-full text-left p-4 font-medium text-gray-800 hover:bg-gray-50 flex justify-between items-center">
+                        How much does it cost to partner with ElimuTech?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">We offer multiple partnership models to suit institutions of all sizes. Our Basic partnership is free, while Premium and Enterprise models have tiered pricing based on the number of students and services required. Contact us for a customized quote.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg mb-4">
+                    <button class="w-full text-left p-4 font-medium text-gray-800 hover:bg-gray-50 flex justify-between items-center">
+                        How do students access the platform?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Once your institution partners with us, we provide bulk enrollment for your students. Students can access courses through our web platform or mobile app using their institutional email addresses. We also provide single sign-on (SSO) integration options.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg mb-4">
+                    <button class="w-full text-left p-4 font-medium text-gray-800 hover:bg-gray-50 flex justify-between items-center">
+                        Can we integrate ElimuTech with our existing LMS?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Yes, our Enterprise partnership includes integration with popular Learning Management Systems used in Kenyan universities. We support LTI integration for seamless course delivery and grade synchronization.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg mb-4">
+                    <button class="w-full text-left p-4 font-medium text-gray-800 hover:bg-gray-50 flex justify-between items-center">
+                        How is the content relevant to Kenyan students?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">All our courses include Kenyan case studies, local industry examples, and projects relevant to our market. We've partnered with Kenyan tech companies to ensure the skills taught match what employers are looking for in the local job market.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg">
+                    <button class="w-full text-left p-4 font-medium text-gray-800 hover:bg-gray-50 flex justify-between items-center">
+                        What support do you provide to partner institutions?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">We provide dedicated support including faculty training workshops, technical assistance, regular progress reports, and a dedicated account manager for Enterprise partners. Our support team is available during East Africa business hours to assist with any issues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-green-700 via-black to-red-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Transform Tech Education at Your Institution?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join Kenya's leading universities and colleges in preparing students for the digital economy.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <a href="#partnership-form" class="bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-6 rounded-md">Request Information</a>
+                <a href="#" class="bg-transparent border-2 border-white hover:bg-white hover:text-green-800 font-bold py-3 px-6 rounded-md">Schedule Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">ElimuTech</h3>
+                    <p class="text-gray-400 mb-4">Kenya's premier e-learning platform for software development, offering free access to verified students and affordable premium courses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Courses</a></li>
+                        <li><a href="institutions.html" class="text-gray-400 hover:text-white text-green-500">For Institutions</a></li>
+                        <li><a href="success.html" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Partner Institutions -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Partner Institutions</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">University of Nairobi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kenyatta University</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">JKUAT</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Strathmore University</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Mount Kenya University</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+254 759 412679</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">institutions@elimutech.ac.ke</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 ElimuTech Kenya. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.border button').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

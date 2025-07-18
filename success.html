@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - ElimuTech | Kenyan Software Development Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style>
+        .kenyan-flag-bg {
+          background: linear-gradient(to right, 
+           #006600 33%,  /* Green */
+           #000000 33%,  /* Black */
+           #000000 66%,  /* Black */
+           #BB0000 66%,  /* Red */
+           #BB0000 100%  /* Red */
+           );
+           height: 8px;
+        }
+        .story-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu {
+            display: none;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            z-index: 1;
+        }
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 70px;
+            height: 70px;
+            background: rgba(4, 120, 87, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .play-btn:hover {
+            background: rgba(4, 120, 87, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .stats-card {
+            transition: all 0.3s ease;
+        }
+        .stats-card:hover {
+            transform: scale(1.05);
+            background-color: #f0fdf4;
+        }
+        .timeline {
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: #047857;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #047857;
+            z-index: 2;
+        }
+        .testimonial-card {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        .testimonial-card::before {
+            content: """
+            position absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 80px;
+            color: #047857;
+            font-family: Georgia, serif;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Kenyan Flag Top Bar -->
+    <div class="kenyan-flag-bg"></div>
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="Images/ELIMU Tech.png" alt="ElimuTech Logo" class="h-10 mr-3">
+                <h1 class="text-xl font-bold text-gray-800">Elimu<span class="text-green-700">Tech</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-green-700 font-medium">Home</a>
+                <a href="courses.html" class="text-gray-700 hover:text-green-700 font-medium">Courses</a>
+                <a href="institutions.html" class="text-gray-700 hover:text-green-700 font-medium">For Institutions</a>
+                <a href="success.html" class="text-green-700 font-medium">Success Stories</a>
+                <a href="contact.html" class="text-gray-700 hover:text-green-700 font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <a href="login.html" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="hidden md:block bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <a href="index.html" class="py-2 text-gray-700 hover:text-green-700 block">Home</a>
+            <a href="courses.html" class="py-2 text-gray-700 hover:text-green-700 block">Courses</a>
+            <a href="institutions.html" class="py-2 text-gray-700 hover:text-green-700 block">For Institutions</a>
+            <a href="successs.html" class="py-2 text-green-700 font-medium block">Success Stories</a>
+            <a href="#" class="py-2 text-gray-700 hover:text-green-700 block">Contact</a>
+            <div class="flex space-x-2 mt-3">
+                <a href="login.html" class="w-1/2 text-center bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="w-1/2 text-center bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-green-700 via-black to-red-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Transforming Lives Through Tech Education</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Discover how ElimuTech has empowered thousands of Kenyan students to launch successful careers in technology</p>
+            <a href="#featured-stories" class="inline-block bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-6 rounded-md">Read Success Stories</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
+                <div class="stats-card p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-green-700 mb-2">5,000+</div>
+                    <div class="text-gray-700">Students Trained</div>
+                </div>
+                <div class="stats-card p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-green-700 mb-2">87%</div>
+                    <div class="text-gray-700">Employment Rate</div>
+                </div>
+                <div class="stats-card p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-green-700 mb-2">350+</div>
+                    <div class="text-gray-700">Projects Completed</div>
+                </div>
+                <div class="stats-card p-6 bg-gray-50 rounded-lg">
+                    <div class="text-4xl font-bold text-green-700 mb-2">24</div>
+                    <div class="text-gray-700">Partner Institutions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Stories -->
+    <section id="featured-stories" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured Success Stories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Real students, real results - from Kenyan universities to tech careers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Story 1 -->
+                <div class="story-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-56"></div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white">
+                            <h3 class="text-xl font-bold">Ian Mutwiri</h3>
+                            <p class="text-green-300">University of Nairobi</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-circle-user h-18 rounded-full mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Software Engineer</h4>
+                                <p class="text-sm text-gray-600">Safaricom PLC, Nairobi</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"After completing the Full Stack Development course on ElimuTech, I secured an internship that turned into a full-time role at Safaricom. The Kenyan-specific projects were exactly what employers were looking for."</p>
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story 2 -->
+                <div class="story-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-56"></div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white">
+                            <h3 class="text-xl font-bold">Grace Wanjiru</h3>
+                            <p class="text-green-300">Kenyatta University</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-circle-user h-18 rounded-full mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Data Analyst</h4>
+                                <p class="text-sm text-gray-600">KCB Bank, Nairobi</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"The Data Science course gave me practical skills I wasn't getting in class. I built a credit risk model using Kenyan banking data that impressed interviewers and helped me land my dream job at KCB."</p>
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Story 3 -->
+                <div class="story-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-56"></div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white">
+                            <h3 class="text-xl font-bold">Vincent Kiptoo</h3>
+                            <p class="text-green-300">JKUAT</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-circle-user h-18 rounded-full mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Founder & CEO</h4>
+                                <p class="text-sm text-gray-600">AgriTech Solutions, Nakuru</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">"After learning mobile app development on ElimuTech, I created an app that helps Kenyan farmers track market prices. We've raised $50,000 in seed funding and now serve over 2,000 farmers across the Rift Valley."</p>
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-md">View More Success Stories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Video Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear directly from students and graduates about their ElimuTech experience</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="video-card">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64"></div>
+                    <div class="play-btn">
+                        <i class="fas fa-play text-white text-2xl"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-10">
+                        <h3 class="font-bold text-lg">From JKUAT to Google Nairobi</h3>
+                        <p class="text-sm">Sarah's journey with ElimuTech</p>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64"></div>
+                    <div class="play-btn">
+                        <i class="fas fa-play text-white text-2xl"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-10">
+                        <h3 class="font-bold text-lg">Building a Tech Startup in Mombasa</h3>
+                        <p class="text-sm">Ahmed's success story</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Journeys -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Career Transformation Journeys</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">How ElimuTech helped Kenyan graduates launch their tech careers</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Journey 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+                    <div class="md:flex">
+                        <div class="md:w-1/3">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 md:h-full"></div>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">From Biology Student to UX Designer</h3>
+                            <p class="text-green-700 mb-4">Maryanne K., Kenyatta University</p>
+                            
+                            <div class="timeline mb-6">
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2019</h4>
+                                    <p class="text-gray-600">Studying Biology at Kenyatta University with no tech background</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2020</h4>
+                                    <p class="text-gray-600">Discovered ElimuTech's UI/UX Design course during lockdown</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2021</h4>
+                                    <p class="text-gray-600">Completed certification and built portfolio with Kenyan app designs</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2022</h4>
+                                    <p class="text-gray-600">Hired as Junior UX Designer at Twiga Foods, Nairobi</p>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card mb-6">
+                                <p class="text-gray-700">"ElimuTech gave me the skills to completely change my career path. As a biology student, I never imagined I'd be working in tech. The Kenyan-focused projects helped me understand our local market needs."</p>
+                            </div>
+                            
+                            <a href="#" class="text-green-700 font-bold hover:text-green-800">Read full story →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Journey 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="md:flex flex-row-reverse">
+                        <div class="md:w-1/3">
+                            <div class="bg-gray-200 border-2 border-dashed rounded-xl w-full h-64 md:h-full"></div>
+                        </div>
+                        <div class="md:w-2/3 p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Mechanical Engineer to Cloud Solutions Architect</h3>
+                            <p class="text-green-700 mb-4">Peter M., University of Nairobi</p>
+                            
+                            <div class="timeline mb-6">
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2018</h4>
+                                    <p class="text-gray-600">Graduated with Mechanical Engineering degree</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2019</h4>
+                                    <p class="text-gray-600">Took ElimuTech's Cloud Computing course while job hunting</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2020</h4>
+                                    <p class="text-gray-600">Certified AWS Solutions Architect</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4 class="font-bold text-gray-800 mb-1">2022</h4>
+                                    <p class="text-gray-600">Promoted to Lead Cloud Architect at iHub, Nairobi</p>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card mb-6">
+                                <p class="text-gray-700">"ElimuTech's cloud course transformed my career. Within two years, I went from unemployed engineer to leading cloud projects for major Kenyan companies. The practical approach made all the difference."</p>
+                            </div>
+                            
+                            <a href="#" class="text-green-700 font-bold hover:text-green-800">Read full story →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institutional Impact -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Impact on Kenyan Institutions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">How universities are benefiting from ElimuTech partnership</p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-green-50 rounded-lg p-8 mb-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-12 mr-4">
+                            <img src="Images/UoN Logo.jpg" alt="UoN Logo" class="h-12 mx-auto mb-2">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">University of Nairobi</h3>
+                            <p class="text-green-700">Partnered with ElimuTech since 2020</p>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-3">Results Achieved:</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-700 mt-1 mr-2"></i>
+                                    <span>40% increase in graduate employment rates</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-700 mt-1 mr-2"></i>
+                                    <span>12 industry partnerships established</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-700 mt-1 mr-2"></i>
+                                    <span>85% of computer science students certified</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="testimonial-card">
+                                <p class="text-gray-700">"Integrating ElimuTech into our curriculum has significantly enhanced our students' practical skills. Our graduates now enter the job market with industry-recognized certifications and portfolios that impress employers."</p>
+                                <p class="mt-4 font-bold">- Dr. James Mwangi, Dean of Computing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-12 mr-4">
+                                <img src="Images/KU-logo.png" alt="KU Logo" class="h-12 mx-auto mb-2">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800">Kenyatta University</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">"After implementing ElimuTech across our IT programs, we've seen a 30% increase in student project quality and a 25% reduction in time-to-employment for graduates."</p>
+                        <p class="text-green-700 font-bold">- Prof. Susan Kimathi, Head of ICT Department</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-16 h-12 mr-4">
+                              <img src="Images/JKUAT-logo.png" alt="JKUAT Logo" class="h-12 mx-auto mb-2">
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800">JKUAT</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4">"ElimuTech's platform allowed us to modernize our curriculum without significant infrastructure investment. Our students now work on Kenyan-relevant projects that prepare them for local tech jobs."</p>
+                        <p class="text-green-700 font-bold">- Dr. Peter Otieno, Computer Science Chair</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Your Story -->
+    <section class="py-16 bg-gradient-to-r from-green-700 via-black to-red-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Share Your Success Story</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Inspired others with how ElimuTech helped your career journey</p>
+                <a href="#" class="inline-block bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-6 rounded-md">Submit Your Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start Your Journey -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/5 bg-gradient-to-b from-green-700 to-black text-white p-8 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-4">Start Your Success Story</h3>
+                        <p>Join thousands of Kenyan students building rewarding tech careers</p>
+                    </div>
+                    <div class="md:w-3/5 p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Begin Your Journey Today</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="#" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-md text-center">
+                                Verify as Student
+                            </a>
+                            <a href="courses.html" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-md text-center">
+                                Browse Courses
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-4 rounded-md text-center sm:col-span-2">
+                                Attend Free Webinar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">ElimuTech</h3>
+                    <p class="text-gray-400 mb-4">Kenya's premier e-learning platform for software development, offering free access to verified students and affordable premium courses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Courses</a></li>
+                        <li><a href="institutions.html" class="text-gray-400 hover:text-white">For Institutions</a></li>
+                        <li><a href="success.html" class="text-gray-400 hover:text-white text-green-500">Success Stories</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Success Stories -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Featured Stories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">From KU to Google Nairobi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Building a Tech Startup in Mombasa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Biology Student to UX Designer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Engineer to Cloud Architect</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">How ElimuTech Changed My Career</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+254 759 412679</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">success@elimutech.ac.ke</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 ElimuTech Kenya. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Story card hover effect
+        document.querySelectorAll('.story-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

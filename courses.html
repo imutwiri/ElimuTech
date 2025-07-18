@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - ElimuTech | Kenyan Software Development Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .kenyan-flag-bg {
+          background: linear-gradient(to right, 
+           #006600 33%,  /* Green */
+           #000000 33%,  /* Black */
+           #000000 66%,  /* Black */
+           #BB0000 66%,  /* Red */
+           #BB0000 100%  /* Red */
+          );
+          height: 8px;
+        }
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            height: 6px;
+            background-color: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #047857;
+        }
+        .mobile-menu {
+            display: none;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .category-btn.active {
+            background-color: #047857;
+            color: white;
+        }
+        .difficulty-btn.active {
+            background-color: #1e40af;
+            color: white;
+        }
+        .filter-card {
+            transition: all 0.3s ease;
+        }
+        .filter-card:hover {
+            background-color: #f3f4f6;
+        }
+        .student-badge {
+            background-color: #047857;
+        }
+        .premium-badge {
+            background-color: #1e293b;
+        }
+        .certificate-border {
+            border: 15px solid transparent;
+            border-image: linear-gradient(135deg, #006600, #000000, #BB0000, #FFFFFF);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Kenyan Flag Top Bar -->
+    <div class="kenyan-flag-bg"></div>
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="Images/ELIMU Tech.png" alt="ElimuTech Logo" class="h-10 mr-3">
+                <h1 class="text-xl font-bold text-gray-800">Elimu<span class="text-green-700">Tech</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-green-700 font-medium">Home</a>
+                <a href="courses.html" class="text-green-700 font-medium">Courses</a>
+                <a href="institutions.html" class="text-gray-700 hover:text-green-700 font-medium">For Institutions</a>
+                <a href="success.html" class="text-gray-700 hover:text-green-700 font-medium">Success Stories</a>
+                <a href="contact.html" class="text-gray-700 hover:text-green-700 font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <a href="login.html" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="hidden md:block bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <a href="index.html" class="py-2 text-gray-700 hover:text-green-700 block">Home</a>
+            <a href="courses.html" class="py-2 text-green-700 font-medium block">Courses</a>
+            <a href="institutions.html" class="py-2 text-gray-700 hover:text-green-700 block">For Institutions</a>
+            <a href="success.html" class="py-2 text-gray-700 hover:text-green-700 block">Success Stories</a>
+            <a href="contact.html" class="py-2 text-gray-700 hover:text-green-700 block">Contact</a>
+            <div class="flex space-x-2 mt-3">
+                <a href="login.html" class="w-1/2 text-center bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="w-1/2 text-center bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Courses Hero Section -->
+    <section class="bg-gradient-to-r from-green-700 via-black to-red-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Explore Our Course Catalog</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Discover Kenyan-relevant software development courses designed to boost your career. Free for verified students, affordable premium access for others.</p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Search courses by name, technology, or skill..." class="w-full py-4 px-6 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-600">
+                    <button class="absolute right-2 top-2 bg-green-700 hover:bg-green-800 text-white py-2 px-6 rounded-md">
+                        <i class="fas fa-search mr-2"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Main Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <div class="md:w-1/4">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Filter Courses</h3>
+                        
+                        <!-- Categories -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3 text-gray-700">Categories</h4>
+                            <div class="space-y-2">
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-green-700 text-white active">
+                                    All Courses
+                                </button>
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Web Development
+                                </button>
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Mobile Apps
+                                </button>
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Data Science
+                                </button>
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Cybersecurity
+                                </button>
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Cloud Computing
+                                </button>
+                                <button class="category-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    UI/UX Design
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Difficulty -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3 text-gray-700">Difficulty Level</h4>
+                            <div class="space-y-2">
+                                <button class="difficulty-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    All Levels
+                                </button>
+                                <button class="difficulty-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Beginner
+                                </button>
+                                <button class="difficulty-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Intermediate
+                                </button>
+                                <button class="difficulty-btn w-full text-left py-2 px-4 rounded-md bg-gray-100 hover:bg-gray-200">
+                                    Advanced
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Duration -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3 text-gray-700">Duration</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="short" class="mr-2 h-4 w-4 text-green-700 rounded">
+                                    <label for="short" class="text-gray-700">Short (1-10 hours)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="medium" class="mr-2 h-4 w-4 text-green-700 rounded" checked>
+                                    <label for="medium" class="text-gray-700">Medium (10-30 hours)</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="long" class="mr-2 h-4 w-4 text-green-700 rounded">
+                                    <label for="long" class="text-gray-700">Long (30+ hours)</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Certification -->
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3 text-gray-700">Certification</h4>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="certified" class="mr-2 h-4 w-4 text-green-700 rounded" checked>
+                                <label for="certified" class="text-gray-700">University Certified</label>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-md">
+                            Apply Filters
+                        </button>
+                    </div>
+                    
+                    <!-- Learning Paths -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">Learning Paths</h3>
+                        <div class="space-y-4">
+                            <div class="filter-card p-4 rounded-md border border-gray-200 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Frontend Developer</h4>
+                                <p class="text-sm text-gray-600 mt-1">5 courses • 120 hours</p>
+                            </div>
+                            <div class="filter-card p-4 rounded-md border border-gray-200 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Backend Specialist</h4>
+                                <p class="text-sm text-gray-600 mt-1">4 courses • 90 hours</p>
+                            </div>
+                            <div class="filter-card p-4 rounded-md border border-gray-200 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Full Stack Engineer</h4>
+                                <p class="text-sm text-gray-600 mt-1">8 courses • 200 hours</p>
+                            </div>
+                            <div class="filter-card p-4 rounded-md border border-gray-200 cursor-pointer">
+                                <h4 class="font-semibold text-gray-800">Data Analyst</h4>
+                                <p class="text-sm text-gray-600 mt-1">6 courses • 150 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Courses List -->
+                <div class="md:w-3/4">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-2xl font-bold text-gray-800">All Courses <span class="text-gray-500 font-normal">(24 courses)</span></h2>
+                        <div class="flex items-center">
+                            <span class="text-gray-700 mr-3">Sort by:</span>
+                            <select class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600">
+                                <option>Most Popular</option>
+                                <option>Newest First</option>
+                                <option>Highest Rated</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Course 1 -->
+                        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="Images/full-stack-web-development.jpg" alt="Full Stack Web Development" class="w-full h-48 object-cover">
+                                <div class="absolute top-2 right-2">
+                                    <span class="student-badge text-white text-xs font-bold px-2 py-1 rounded-full">FREE FOR STUDENTS</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">Full Stack Web Development</h3>
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 4,999</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Master MERN stack with Kenyan market-specific projects and case studies.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <span class="text-gray-700 font-medium">4.8</span>
+                                        <span class="text-gray-500 mx-1">•</span>
+                                        <span class="text-gray-500">32 hrs</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">UoN Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 2 -->
+                        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="Images/app-dev" alt="Mobile App Development" class="w-full h-48 object-cover">
+                                <div class="absolute top-2 right-2">
+                                    <span class="student-badge text-white text-xs font-bold px-2 py-1 rounded-full">FREE FOR STUDENTS</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">Mobile App Development</h3>
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 3,999</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Build cross-platform mobile apps for Kenyan businesses and startups.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <span class="text-gray-700 font-medium">4.7</span>
+                                        <span class="text-gray-500 mx-1">•</span>
+                                        <span class="text-gray-500">28 hrs</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">KU Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 3 -->
+                        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="Images/data sci.jpg" alt="Data Science" class="w-full h-48 object-cover">
+                                <div class="absolute top-2 right-2">
+                                    <span class="student-badge text-white text-xs font-bold px-2 py-1 rounded-full">FREE FOR STUDENTS</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">Data Science Fundamentals</h3>
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 5,999</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Python and ML applied to Kenyan business and agricultural data.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <span class="text-gray-700 font-medium">4.9</span>
+                                        <span class="text-gray-500 mx-1">•</span>
+                                        <span class="text-gray-500">40 hrs</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">JKUAT Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 4 -->
+                        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="Images/cybesec.webp" alt="Cybersecurity" class="w-full h-48 object-cover">
+                                <div class="absolute top-2 right-2">
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 6,499</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">Cybersecurity Essentials</h3>
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 6,499</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Protect systems and networks from cyber threats with Kenyan case studies.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <span class="text-gray-700 font-medium">4.6</span>
+                                        <span class="text-gray-500 mx-1">•</span>
+                                        <span class="text-gray-500">36 hrs</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">Strathmore Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 5 -->
+                        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="Images/AWS-Cloud.jpg" class="w-full h-48 object-cover">
+                                <div class="absolute top-2 right-2">
+                                    <span class="student-badge text-white text-xs font-bold px-2 py-1 rounded-full">FREE FOR STUDENTS</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">Cloud Computing with AWS</h3>
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 5,499</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Deploy and manage applications on AWS with Kenya-specific examples.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <span class="text-gray-700 font-medium">4.7</span>
+                                        <span class="text-gray-500 mx-1">•</span>
+                                        <span class="text-gray-500">30 hrs</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">MKU Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 6 -->
+                        <div class="course-card bg-white rounded-lg overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="Images/ui.png" alt="UI/UX Design" class="w-full h-48 object-cover">
+                                <div class="absolute top-2 right-2">
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 3,499</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-gray-800">UI/UX Design Fundamentals</h3>
+                                    <span class="premium-badge text-white text-xs font-bold px-2 py-1 rounded-full">KSh 3,499</span>
+                                </div>
+                                <p class="text-gray-600 mb-4">Design user-friendly interfaces for Kenyan digital products and services.</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                        <span class="text-gray-700 font-medium">4.8</span>
+                                        <span class="text-gray-500 mx-1">•</span>
+                                        <span class="text-gray-500">24 hrs</span>
+                                    </div>
+                                    <span class="text-sm text-gray-500">KCA Certified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="mt-12 flex justify-center">
+                        <nav class="inline-flex rounded-md shadow">
+                            <a href="#" class="py-2 px-4 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                            <a href="#" class="py-2 px-4 border-t border-b border-gray-300 bg-green text-gray-500 hover:bg-gray-50">1</a>
+                            <a href="#" class="py-2 px-4 border-t border-b border-gray-300 bg-green-700 text-white">2</a>
+                            <a href="#" class="py-2 px-4 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+                            <a href="#" class="py-2 px-4 border-t border-b border-r border-gray-300 bg-white text-gray-500 hover:bg-gray-50">4</a>
+                            <a href="#" class="py-2 px-4 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Choose ElimuTech?</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Feature 1 -->
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">University Partnerships</h3>
+                    <p class="text-gray-600">Courses developed in collaboration with Kenyan universities, ensuring curriculum relevance.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Practical Projects</h3>
+                    <p class="text-gray-600">Work on real-world projects relevant to Kenyan industries and challenges.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Industry-Recognized Certificates</h3>
+                    <p class="text-gray-600">Earn certificates recognized by Kenyan employers and universities.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-comments text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Local Community Support</h3>
+                    <p class="text-gray-600">Connect with Kenyan instructors and peers through our active learning community.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-mobile-alt text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Mobile-Friendly Learning</h3>
+                    <p class="text-gray-600">Access courses on any device, even with limited bandwidth - perfect for Kenya.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="text-center p-6">
+                    <div class="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-hand-holding-usd text-3xl text-green-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Affordable Pricing</h3>
+                    <p class="text-gray-600">Premium courses at Kenyan-friendly prices with flexible payment options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">What Our Students Say</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Hear from Kenyan students who transformed their careers through our courses.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user h-18 rounded-full mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Sharon K.</h4>
+                            <p class="text-sm text-gray-600">JKUAT, Computer Science</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"After completing the Full Stack course, I landed an internship at ICT Authority. The Kenyan-specific projects really helped me stand out."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user h-18 rounded-full mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Mark M.</h4>
+                            <p class="text-sm text-gray-600">UoN, Software Engineering</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"The mobile app development course gave me practical skills I wasn't getting in class. I built an agri-tech app that won a university competition!"</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user h-18 rounded-full mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Lydia G.</h4>
+                            <p class="text-sm text-gray-600">KU, Information Technology</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"As a verified student, I accessed all courses for free. The certificate helped me get my first job at a Kenyan fintech company right after graduation."</p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-green-700 via-black to-red-700 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Ready to Advance Your Tech Career?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of Kenyan students building in-demand software skills.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-6 rounded-md">Verify as Student</a>
+                <a href="courses.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-green-800 font-bold py-3 px-6 rounded-md">Browse Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">ElimuTech</h3>
+                    <p class="text-gray-400 mb-4">Kenya's premier e-learning platform for software development, offering free access to verified students and affordable premium courses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white text-green-500">Courses</a></li>
+                        <li><a href="" class="text-gray-400 hover:text-white">Student Verification</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="success.html" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Partner Institutions -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Partner Institutions</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">University of Nairobi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kenyatta University</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">JKUAT</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Strathmore University</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Mount Kenya University</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Nairobi, Kenya</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+254 759 412679</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@elimutech.ac.ke</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 ElimuTech Kenya. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+
+        // Category filter buttons
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('bg-green-700', 'text-white'));
+                this.classList.add('bg-green-700', 'text-white');
+            });
+        });
+
+        // Difficulty filter buttons
+        const difficultyBtns = document.querySelectorAll('.difficulty-btn');
+        difficultyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                difficultyBtns.forEach(b => b.classList.remove('bg-blue-800', 'text-white'));
+                this.classList.add('bg-blue-800', 'text-white');
+            });
+        });
+
+        // Course card hover effect
+        const courseCards = document.querySelectorAll('.course-card');
+        courseCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Filter card hover effect
+        const filterCards = document.querySelectorAll('.filter-card');
+        filterCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f3f4f6';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ElimuTech | Kenyan Software Development Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+     crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style>
+        .kenyan-flag-bg {
+          background: linear-gradient(to right, 
+           #006600 33%,  /* Green */
+           #000000 33%,  /* Black */
+           #000000 66%,  /* Black */
+           #BB0000 66%,  /* Red */
+           #BB0000 100%  /* Red */
+          );
+          height: 8px;
+        }
+        .contact-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu {
+            display: none;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+        }
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .office-card {
+            border-left: 4px solid #047857;
+            transition: all 0.3s ease;
+        }
+        .office-card:hover {
+            background-color: #f0fdf4;
+            transform: translateX(5px);
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Kenyan Flag Top Bar -->
+    <div class="kenyan-flag-bg"></div>
+
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="Images/ELIMU Tech.png" alt="ElimuTech Logo" class="h-10 mr-3">
+                <h1 class="text-xl font-bold text-gray-800">Elimu<span class="text-green-700">Tech</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-green-700 font-medium">Home</a>
+                <a href="courses.html" class="text-gray-700 hover:text-green-700 font-medium">Courses</a>
+                <a href="institutions.html" class="text-gray-700 hover:text-green-700 font-medium">For Institutions</a>
+                <a href="success.html" class="text-gray-700 hover:text-green-700 font-medium">Success Stories</a>
+                <a href="contact.html" class="text-green-700 font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <a href="login.html" class="hidden md:block bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="hidden md:block bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <a href="index.html" class="py-2 text-gray-700 hover:text-green-700 block">Home</a>
+            <a href="courses.html" class="py-2 text-gray-700 hover:text-green-700 block">Courses</a>
+            <a href="institutions.html" class="py-2 text-gray-700 hover:text-green-700 block">For Institutions</a>
+            <a href="success.html" class="py-2 text-gray-700 hover:text-green-700 block">Success Stories</a>
+            <a href="contact.html" class="py-2 text-green-700 font-medium block">Contact</a>
+            <div class="flex space-x-2 mt-3">
+                <a href="login.html" class="w-1/2 text-center bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md font-medium">Login</a>
+                <a href="register.html" class="w-1/2 text-center bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-md font-medium">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-green-700 via-black to-red-700 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">We're Here to Help</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Contact ElimuTech for any questions about courses, student verification, or institutional partnerships</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact-form" class="bg-white text-green-800 hover:bg-gray-100 font-bold py-3 px-6 rounded-md">Send a Message</a>
+                <a href="#faq" class="bg-transparent border-2 border-white hover:bg-white hover:text-green-800 font-bold py-3 px-6 rounded-md">View FAQs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose your preferred method to contact our Kenyan team</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Contact Option 1 -->
+                <div class="contact-card bg-gray-50 p-8 rounded-lg text-center">
+                    <div class="contact-icon bg-green-100 text-green-700">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Call Us</h3>
+                    <p class="text-gray-600 mb-4">Speak directly with our support team during business hours</p>
+                    <div class="text-xl font-bold text-green-700 mb-2">+254 759 412679</div>
+                    <p class="text-gray-500 text-sm">Mon-Fri: 8am - 5pm EAT</p>
+                    <a href="tel:+254759412679" class="inline-block mt-4 text-green-700 hover:text-green-800 font-medium">
+                        <i class="fas fa-phone mr-2"></i> Call Now
+                    </a>
+                </div>
+                
+                <!-- Contact Option 2 -->
+                <div class="contact-card bg-gray-50 p-8 rounded-lg text-center">
+                    <div class="contact-icon bg-green-100 text-green-700">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Email Us</h3>
+                    <p class="text-gray-600 mb-4">Send us an email and we'll respond within 24 hours</p>
+                    <div class="text-lg font-bold text-green-700 mb-2">info@elimutech.ac.ke</div>
+                    <p class="text-gray-500 text-sm">General inquiries</p>
+                    <a href="mailto:info@elimutech.ac.ke" class="inline-block mt-4 text-green-700 hover:text-green-800 font-medium">
+                        <i class="fas fa-envelope mr-2"></i> Send Email
+                    </a>
+                </div>
+                
+                <!-- Contact Option 3 -->
+                <div class="contact-card bg-gray-50 p-8 rounded-lg text-center">
+                    <div class="contact-icon bg-green-100 text-green-700">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">WhatsApp</h3>
+                    <p class="text-gray-600 mb-4">Message us on WhatsApp for quick responses</p>
+                    <div class="text-lg font-bold text-green-700 mb-2">+254 759 412679</div>
+                    <p class="text-gray-500 text-sm">Available 24/7 for students</p>
+                    <a href="https://wa.me/254759412679" target="_blank" class="inline-block mt-4 text-green-700 hover:text-green-800 font-medium">
+                        <i class="fab fa-whatsapp mr-2"></i> Chat Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/5 bg-gradient-to-b from-green-700 to-black text-white p-8">
+                        <h3 class="text-2xl font-bold mb-4">Contact Form</h3>
+                        <p class="mb-6">Have questions? Send us a message and our team will get back to you promptly.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>Response within 24 hours</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>Kenyan-based support team</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-2"></i>
+                                <span>Available in English and Swahili</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-3/5 p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2" for="first-name">First Name</label>
+                                    <input type="text" id="first-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Your first name">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2" for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="Your last name">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="your@gmail.com">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="phone">Phone</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="+254 700 123456">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2" for="subject">Subject</label>
+                                <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600">
+                                    <option value="">Select a subject</option>
+                                    <option value="student">Student Verification</option>
+                                    <option value="course">Course Inquiry</option>
+                                    <option value="payment">Payment Issue</option>
+                                    <option value="institution">Institutional Partnership</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-700 font-medium mb-2" for="message">Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600" placeholder="How can we help you?"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-4 rounded-md">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Kenyan Offices</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Visit us in person at any of our locations across Kenya</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Nairobi Office -->
+                <div class="office-card bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-city text-green-700"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Nairobi HQ</h3>
+                    </div>
+                    <address class="text-gray-600 not-italic mb-4">
+                        ElimuTech Centre<br>
+                        Ngong Road, Nairobi<br>
+                        5th Floor, Senteu Plaza<br>
+                        P.O. Box 12345-00100
+                    </address>
+                    <div class="text-gray-700 mb-2">
+                        <i class="fas fa-phone-alt mr-2 text-green-700"></i> +254 20 1234567
+                    </div>
+                    <div class="text-gray-700">
+                        <i class="fas fa-envelope mr-2 text-green-700"></i> nairobi@elimutech.ac.ke
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" class="text-green-700 hover:text-green-800 font-medium">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mombasa Office -->
+                <div class="office-card bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-umbrella-beach text-green-700"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Mombasa Branch</h3>
+                    </div>
+                    <address class="text-gray-600 not-italic mb-4">
+                        ElimuTech Coastal Hub<br>
+                        Moi Avenue, Mombasa<br>
+                        2nd Floor, Nyali Centre<br>
+                        P.O. Box 9876-80100
+                    </address>
+                    <div class="text-gray-700 mb-2">
+                        <i class="fas fa-phone-alt mr-2 text-green-700"></i> +254 41 9876543
+                    </div>
+                    <div class="text-gray-700">
+                        <i class="fas fa-envelope mr-2 text-green-700"></i> mombasa@elimutech.ac.ke
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" class="text-green-700 hover:text-green-800 font-medium">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Kisumu Office -->
+                <div class="office-card bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-water text-green-700"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Kisumu Branch</h3>
+                    </div>
+                    <address class="text-gray-600 not-italic mb-4">
+                        ElimuTech Lake Hub<br>
+                        Oginga Odinga Street, Kisumu<br>
+                        3rd Floor, Lake View Plaza<br>
+                        P.O. Box 5678-40100
+                    </address>
+                    <div class="text-gray-700 mb-2">
+                        <i class="fas fa-phone-alt mr-2 text-green-700"></i> +254 57 7654321
+                    </div>
+                    <div class="text-gray-700">
+                        <i class="fas fa-envelope mr-2 text-green-700"></i> kisumu@elimutech.ac.ke
+                    </div>
+                    <div class="mt-4">
+                        <a href="#" class="text-green-700 hover:text-green-800 font-medium">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Find Us on the Map</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Visit our headquarters in Nairobi</p>
+                </div>
+                
+                <div class="map-container bg-gray-200 border-2 border-dashed rounded-xl w-full">
+                    <!-- In a real implementation, you would embed a Google Map here -->
+                    <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                        <div class="text-center p-8">
+                            <i class="fas fa-map-marked-alt text-5xl text-green-700 mb-4"></i>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Nairobi Headquarters</h3>
+                            <p class="text-gray-600 mb-4">Ngong Road, Senteu Plaza, 5th Floor</p>
+                            <button class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md">
+                                Open in Google Maps
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Quick answers to common questions from Kenyan students and institutions</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">How long does student verification take?</h3>
+                    <p class="text-gray-600">Verification typically takes 1-2 business days after you submit your student ID. During peak times (beginning of semesters), it may take up to 3 business days. You'll receive an email notification once your verification is complete.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">What payment methods do you accept?</h3>
+                    <p class="text-gray-600">We accept M-Pesa, credit/debit cards (Visa, Mastercard), and bank transfers. For institutional payments, we accept bank transfers and cheques. All payments are in Kenyan Shillings (KES).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Can I access courses on my mobile phone?</h3>
+                    <p class="text-gray-600">Yes! Our platform is fully responsive and works on all devices. We also have a mobile app available on Google Play Store for Android devices. Our courses are optimized for mobile learning with Kenya's internet speeds in mind.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">How do I get my certificate after completing a course?</h3>
+                    <p class="text-gray-600">After completing all course requirements, your digital certificate will be available for download in your dashboard. You can also request a printed certificate for an additional fee, which will be delivered to any address in Kenya within 7-10 business days.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Do you offer discounts for Kenyan institutions?</h3>
+                    <p class="text-gray-600">Yes, we offer special pricing for Kenyan universities, colleges, and technical institutes. Discounts are based on the number of students enrolled. Contact our institutional partnerships team at institutions@elimutech.ac.ke for customized quotes.</p>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#" class="inline-block bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-md">View Full FAQ Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Hours -->
+    <section class="py-16 bg-gradient-to-r from-green-700 via-black to-red-700 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Support Hours</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">Our Kenyan support team is available to assist you</p>
+                
+                <div class="grid md:grid-cols-3 gap-8 bg-white bg-opacity-20 rounded-lg p-8">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Weekdays</h3>
+                        <p>8:00 AM - 5:00 PM EAT</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Saturdays</h3>
+                        <p>9:00 AM - 1:00 PM EAT</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2">Emergency Support</h3>
+                        <p>24/7 via WhatsApp</p>
+                    </div>
+                </div>
+                
+                <div class="mt-10">
+                    <p class="text-lg">For urgent issues outside business hours, contact us via WhatsApp at <span class="font-bold">+254 759 412679</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">ElimuTech</h3>
+                    <p class="text-gray-400 mb-4">Kenya's premier e-learning platform for software development, offering free access to verified students and affordable premium courses.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="courses.html" class="text-gray-400 hover:text-white">Courses</a></li>
+                        <li><a href="institutions.html" class="text-gray-400 hover:text-white">For Institutions</a></li>
+                        <li><a href="successs.html" class="text-gray-400 hover:text-white">Success Stories</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white text-green-500">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">Ngong Road, Senteu Plaza, Nairobi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+254 20 1234567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">info@elimutech.ac.ke</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">+254 759 412679</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe for updates on new courses and opportunities</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-md focus:outline-none text-gray-800">
+                            <button type="submit" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-r-md">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 ElimuTech Kenya. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Contact card hover effect
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

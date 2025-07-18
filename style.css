@@ -1,0 +1,64 @@
+.kenyan-flag-bg {
+  background: linear-gradient(to right, 
+    #006600 33%,  /* Green */
+    #000000 33%,  /* Black */
+    #000000 66%,  /* Black */
+    #BB0000 66%,  /* Red */
+    #BB0000 100%  /* Red */
+    );
+  height: 8px;
+}
+
+.course-card {
+  transition: all 0.3s ease;
+}
+        
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+        
+.student-badge {
+  background: linear-gradient(135deg, #006600, #000000);
+}
+        
+.premium-badge {
+  background: linear-gradient(135deg, #BB0000, #FF6B00);
+}
+        
+.progress-bar {
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+        
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #006600, #000000);
+  transition: width 0.5s ease;
+}
+        
+.certificate-border {
+  border: 15px solid transparent;
+  border-image: linear-gradient(135deg, #006600, #000000, #BB0000, #FFFFFF);
+  border-image-slice: 1;
+}
+    
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+    .mobile-menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+    }
+}
