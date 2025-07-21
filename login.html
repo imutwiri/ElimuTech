@@ -11,8 +11,14 @@
     />
     <style>
         .kenyan-flag-bg {
-            height: 6px;
-            background: linear-gradient(to right, black 33.33%, red 33.33%, red 66.66%, green 66.66%);
+           background: linear-gradient(to right, 
+             #006600 33%,  /* Green */
+             #000000 33%,  /* Black */
+             #000000 66%,  /* Black */
+             #BB0000 66%,  /* Red */
+             #BB0000 100%  /* Red */
+            );
+          height: 8px;
         }
         .mobile-menu {
             max-height: 0;
@@ -49,21 +55,6 @@
             bottom: 10px;
             border: 2px solid #047857;
             pointer-events: none;
-        }
-        .login-container {
-            background: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
-            background-size: cover;
-            position: relative;
-        }
-        .login-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 0;
         }
         .student-badge {
             background-color: #047857;
@@ -160,7 +151,7 @@
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <i class="fas fa-envelope text-gray-400"></i>
                                 </div>
-                                <input type="email" id="email" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md focus:outline-none input-field" placeholder="your@email.com" required>
+                                <input type="email" id="email" class="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md focus:outline-none input-field" placeholder="your@gmail.com" required>
                             </div>
                         </div>
                         
